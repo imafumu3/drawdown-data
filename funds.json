@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-22T08:24:36+09:00",
+  "generated_at": "2026-11-24T08:33:38+09:00",
   "anchor_date": "2026-11-20",
   "target_date": "2026-11-24",
   "funds": [
@@ -13,10 +13,10 @@
       "anchor": 35574,
       "anchor_date": "2026-11-20",
       "target_date": "2026-11-24",
-      "forecast": 34404,
-      "chg": -3.29,
-      "reflected_date": "2026-11-20",
-      "pending_date": "2026-11-23",
+      "forecast": 35774,
+      "chg": 0.56,
+      "reflected_date": "2026-11-23",
+      "pending_date": null,
       "history": [
         [
           "2026-11-20",
@@ -110,10 +110,10 @@
       "anchor": 33753,
       "anchor_date": "2026-11-20",
       "target_date": "2026-11-24",
-      "forecast": 32652,
-      "chg": -3.26,
-      "reflected_date": "2026-11-20",
-      "pending_date": "2026-11-23",
+      "forecast": 33907,
+      "chg": 0.46,
+      "reflected_date": "2026-11-23",
+      "pending_date": null,
       "history": [
         [
           "2026-11-20",
@@ -207,10 +207,10 @@
       "anchor": 33052,
       "anchor_date": "2026-11-20",
       "target_date": "2026-11-24",
-      "forecast": 31974,
-      "chg": -3.26,
-      "reflected_date": "2026-11-20",
-      "pending_date": "2026-11-23",
+      "forecast": 33203,
+      "chg": 0.46,
+      "reflected_date": "2026-11-23",
+      "pending_date": null,
       "history": [
         [
           "2026-11-20",
@@ -304,10 +304,10 @@
       "anchor": 42207,
       "anchor_date": "2026-11-20",
       "target_date": "2026-11-24",
-      "forecast": 40731,
-      "chg": -3.5,
-      "reflected_date": "2026-11-20",
-      "pending_date": "2026-11-23",
+      "forecast": 42465,
+      "chg": 0.61,
+      "reflected_date": "2026-11-23",
+      "pending_date": null,
       "history": [
         [
           "2026-11-20",
@@ -401,10 +401,10 @@
       "anchor": 38575,
       "anchor_date": "2026-11-20",
       "target_date": "2026-11-24",
-      "forecast": 37226,
-      "chg": -3.5,
-      "reflected_date": "2026-11-20",
-      "pending_date": "2026-11-23",
+      "forecast": 38811,
+      "chg": 0.61,
+      "reflected_date": "2026-11-23",
+      "pending_date": null,
       "history": [
         [
           "2026-11-20",
@@ -498,10 +498,10 @@
       "anchor": 42539,
       "anchor_date": "2026-11-20",
       "target_date": "2026-11-24",
-      "forecast": 41127,
-      "chg": -3.32,
-      "reflected_date": "2026-11-20",
-      "pending_date": "2026-11-23",
+      "forecast": 42777,
+      "chg": 0.56,
+      "reflected_date": "2026-11-23",
+      "pending_date": null,
       "history": [
         [
           "2026-11-20",
@@ -595,10 +595,10 @@
       "anchor": 42908,
       "anchor_date": "2026-11-20",
       "target_date": "2026-11-24",
-      "forecast": 41510,
-      "chg": -3.26,
-      "reflected_date": "2026-11-20",
-      "pending_date": "2026-11-23",
+      "forecast": 43048,
+      "chg": 0.33,
+      "reflected_date": "2026-11-23",
+      "pending_date": null,
       "history": [
         [
           "2026-11-20",
@@ -692,10 +692,10 @@
       "anchor": 50414,
       "anchor_date": "2026-11-20",
       "target_date": "2026-11-24",
-      "forecast": 47682,
-      "chg": -5.42,
-      "reflected_date": "2026-11-20",
-      "pending_date": "2026-11-23",
+      "forecast": 50723,
+      "chg": 0.61,
+      "reflected_date": "2026-11-23",
+      "pending_date": null,
       "history": [
         [
           "2026-11-20",
@@ -780,5 +780,5 @@
       ]
     }
   ],
-  "hash": 90574299
+  "hash": 2350435550
 }
