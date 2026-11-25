@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-25T07:44:03+09:00",
-  "anchor_date": "2026-11-24",
-  "target_date": "2026-11-25",
+  "generated_at": "2026-11-26T07:42:10+09:00",
+  "anchor_date": "2026-11-25",
+  "target_date": "2026-11-26",
   "funds": [
     {
       "id": "emaxis-orukan",
@@ -10,14 +10,18 @@
       "code": "0331418A",
       "category": "全世界株式",
       "color": "#b07cc6",
-      "anchor": 35539,
-      "anchor_date": "2026-11-24",
-      "target_date": "2026-11-25",
-      "forecast": 35418,
-      "chg": -0.34,
-      "reflected_date": "2026-11-24",
+      "anchor": 35619,
+      "anchor_date": "2026-11-25",
+      "target_date": "2026-11-26",
+      "forecast": 35607,
+      "chg": -0.03,
+      "reflected_date": "2026-11-25",
       "pending_date": null,
       "history": [
+        [
+          "2026-11-25",
+          35619
+        ],
         [
           "2026-11-24",
           35539
@@ -93,10 +97,6 @@
         [
           "2026-10-27",
           37441
-        ],
-        [
-          "2026-10-26",
-          37189
         ]
       ]
     },
@@ -107,14 +107,18 @@
       "code": "9I311179",
       "category": "全世界株式",
       "color": "#d1608f",
-      "anchor": 33860,
-      "anchor_date": "2026-11-24",
-      "target_date": "2026-11-25",
-      "forecast": 33779,
-      "chg": -0.24,
-      "reflected_date": "2026-11-24",
+      "anchor": 33805,
+      "anchor_date": "2026-11-25",
+      "target_date": "2026-11-26",
+      "forecast": 33821,
+      "chg": 0.05,
+      "reflected_date": "2026-11-25",
       "pending_date": null,
       "history": [
+        [
+          "2026-11-25",
+          33805
+        ],
         [
           "2026-11-24",
           33860
@@ -190,10 +194,6 @@
         [
           "2026-10-27",
           35496
-        ],
-        [
-          "2026-10-26",
-          35237
         ]
       ]
     },
@@ -204,14 +204,18 @@
       "code": "8931217C",
       "category": "全世界株式",
       "color": "#5c7cfa",
-      "anchor": 33142,
-      "anchor_date": "2026-11-24",
-      "target_date": "2026-11-25",
-      "forecast": 33062,
-      "chg": -0.24,
-      "reflected_date": "2026-11-24",
+      "anchor": 33095,
+      "anchor_date": "2026-11-25",
+      "target_date": "2026-11-26",
+      "forecast": 33111,
+      "chg": 0.05,
+      "reflected_date": "2026-11-25",
       "pending_date": null,
       "history": [
+        [
+          "2026-11-25",
+          33095
+        ],
         [
           "2026-11-24",
           33142
@@ -287,10 +291,6 @@
         [
           "2026-10-27",
           34739
-        ],
-        [
-          "2026-10-26",
-          34488
         ]
       ]
     },
@@ -301,14 +301,18 @@
       "code": "03311187",
       "category": "米国株式",
       "color": "#e56b4e",
-      "anchor": 42418,
-      "anchor_date": "2026-11-24",
-      "target_date": "2026-11-25",
-      "forecast": 42293,
-      "chg": -0.29,
-      "reflected_date": "2026-11-24",
+      "anchor": 42313,
+      "anchor_date": "2026-11-25",
+      "target_date": "2026-11-26",
+      "forecast": 42232,
+      "chg": -0.19,
+      "reflected_date": "2026-11-25",
       "pending_date": null,
       "history": [
+        [
+          "2026-11-25",
+          42313
+        ],
         [
           "2026-11-24",
           42418
@@ -384,10 +388,6 @@
         [
           "2026-10-27",
           44590
-        ],
-        [
-          "2026-10-26",
-          44169
         ]
       ]
     },
@@ -398,14 +398,18 @@
       "code": "89311199",
       "category": "米国株式",
       "color": "#3b82c4",
-      "anchor": 38782,
-      "anchor_date": "2026-11-24",
-      "target_date": "2026-11-25",
-      "forecast": 38668,
-      "chg": -0.29,
-      "reflected_date": "2026-11-24",
+      "anchor": 38692,
+      "anchor_date": "2026-11-25",
+      "target_date": "2026-11-26",
+      "forecast": 38618,
+      "chg": -0.19,
+      "reflected_date": "2026-11-25",
       "pending_date": null,
       "history": [
+        [
+          "2026-11-25",
+          38692
+        ],
         [
           "2026-11-24",
           38782
@@ -481,10 +485,6 @@
         [
           "2026-10-27",
           40750
-        ],
-        [
-          "2026-10-26",
-          40368
         ]
       ]
     },
@@ -495,14 +495,18 @@
       "code": "9I312179",
       "category": "米国株式",
       "color": "#a1887f",
-      "anchor": 42731,
-      "anchor_date": "2026-11-24",
-      "target_date": "2026-11-25",
-      "forecast": 42644,
-      "chg": -0.2,
-      "reflected_date": "2026-11-24",
+      "anchor": 42664,
+      "anchor_date": "2026-11-25",
+      "target_date": "2026-11-26",
+      "forecast": 42613,
+      "chg": -0.12,
+      "reflected_date": "2026-11-25",
       "pending_date": null,
       "history": [
+        [
+          "2026-11-25",
+          42664
+        ],
         [
           "2026-11-24",
           42731
@@ -578,10 +582,6 @@
         [
           "2026-10-27",
           44811
-        ],
-        [
-          "2026-10-26",
-          44391
         ]
       ]
     },
@@ -592,14 +592,18 @@
       "code": "03319172",
       "category": "先進国株式",
       "color": "#4db6ac",
-      "anchor": 42965,
-      "anchor_date": "2026-11-24",
-      "target_date": "2026-11-25",
-      "forecast": 42965,
-      "chg": 0.0,
-      "reflected_date": "2026-11-23",
-      "pending_date": "2026-11-24",
+      "anchor": 42914,
+      "anchor_date": "2026-11-25",
+      "target_date": "2026-11-26",
+      "forecast": 42932,
+      "chg": 0.04,
+      "reflected_date": "2026-11-25",
+      "pending_date": null,
       "history": [
+        [
+          "2026-11-25",
+          42914
+        ],
         [
           "2026-11-24",
           42965
@@ -675,10 +679,6 @@
         [
           "2026-10-27",
           45032
-        ],
-        [
-          "2026-10-26",
-          44646
         ]
       ]
     },
@@ -689,14 +689,18 @@
       "code": "04317188",
       "category": "NASDAQ100",
       "color": "#e8a13a",
-      "anchor": 50671,
-      "anchor_date": "2026-11-24",
-      "target_date": "2026-11-25",
-      "forecast": 49762,
-      "chg": -1.79,
-      "reflected_date": "2026-11-24",
+      "anchor": 49785,
+      "anchor_date": "2026-11-25",
+      "target_date": "2026-11-26",
+      "forecast": 49498,
+      "chg": -0.58,
+      "reflected_date": "2026-11-25",
       "pending_date": null,
       "history": [
+        [
+          "2026-11-25",
+          49785
+        ],
         [
           "2026-11-24",
           50671
@@ -772,13 +776,9 @@
         [
           "2026-10-27",
           54998
-        ],
-        [
-          "2026-10-26",
-          54266
         ]
       ]
     }
   ],
-  "hash": 3833218832
+  "hash": 150585651
 }
