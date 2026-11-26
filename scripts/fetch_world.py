@@ -16,7 +16,7 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 
 DAILY_API = "https://query2.finance.yahoo.com/v8/finance/chart/{sym}?range=6mo&interval=1d"
-INTRA_API = "https://query2.finance.yahoo.com/v8/finance/chart/{sym}?range=1d&interval=5m"
+INTRA_API = "https://query2.finance.yahoo.com/v8/finance/chart/{sym}?range=5d&interval=5m"
 HEADERS = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"}
 JST = timezone(timedelta(hours=9))
 
@@ -60,9 +60,15 @@ def fetch_chart(url_template: str, symbol: str) -> dict:
 
 
 def fetch_daily(symbol: str) -> list[list]:
-    """日次終値 [[日付, 終値], ...] を現地日付昇順で返す。"""
+    """日次終値 [[日付, 終値], ...] を現地日付昇順で返す。
+
+    Yahooの日次系列は最新の取引日のバーが None のまま返ることがあり、
+    そのままだと最新終値が1日遅れになり5分足と日付がずれる。
+    meta の現在値（regularMarketPrice / regularMarketTime）で最新日を補完する。
+    """
     result = fetch_chart(DAILY_API, symbol)
-    gmtoffset = result.get("meta", {}).get("gmtoffset", 0) or 0
+    meta = result.get("meta", {})
+    gmtoffset = meta.get("gmtoffset", 0) or 0
     market_tz = timezone(timedelta(seconds=int(gmtoffset)))
     stamps = result.get("timestamp") or []
     quotes = result.get("indicators", {}).get("quote") or [{}]
@@ -75,11 +81,27 @@ def fetch_daily(symbol: str) -> list[list]:
         day = datetime.fromtimestamp(ts, tz=market_tz).strftime("%Y-%m-%d")
         by_date[day] = round(float(close), 2)
 
-    return [[day, by_date[day]] for day in sorted(by_date)]
+    series = [[day, by_date[day]] for day in sorted(by_date)]
+
+    rmp = meta.get("regularMarketPrice")
+    rmt = meta.get("regularMarketTime")
+    if rmp is not None and rmt:
+        live_day = datetime.fromtimestamp(int(rmt), tz=market_tz).strftime("%Y-%m-%d")
+        live_val = round(float(rmp), 2)
+        if not series or live_day > series[-1][0]:
+            series.append([live_day, live_val])
+        elif live_day == series[-1][0]:
+            series[-1] = [live_day, live_val]
+
+    return series
 
 
-def fetch_intra(symbol: str) -> dict | None:
-    """当日5分足 {"date": 日付, "points": [["HH:MM", 終値], ...]} を返す。"""
+def fetch_intra(symbol: str) -> tuple[dict | None, dict]:
+    """5分足を取得し (表示用データ, 日別最終値) を返す。
+
+    表示用データは直近の取引日1日分 {"date": 日付, "points": [["HH:MM", 値], ...]}。
+    日別最終値は {日付: その日の最後の5分足の値} で、日次系列の欠け日の補完に使う。
+    """
     result = fetch_chart(INTRA_API, symbol)
     gmtoffset = result.get("meta", {}).get("gmtoffset", 0) or 0
     market_tz = timezone(timedelta(seconds=int(gmtoffset)))
@@ -95,13 +117,17 @@ def fetch_intra(symbol: str) -> dict | None:
         raw.append((dt.strftime("%Y-%m-%d"), dt.strftime("%H:%M"), round(float(close), 2)))
 
     if not raw:
-        return None
+        return None, {}
+
+    day_closes = {}
+    for d, _, c in raw:
+        day_closes[d] = c
 
     latest_date = max(d for d, _, _ in raw)
     points = [[hm, c] for d, hm, c in raw if d == latest_date]
     if not points:
-        return None
-    return {"date": latest_date, "points": points}
+        return None, day_closes
+    return {"date": latest_date, "points": points}, day_closes
 
 
 def load_previous(out_path: str) -> dict[str, dict]:
@@ -134,16 +160,39 @@ def main() -> int:
             if len(series) < 2:
                 raise ValueError(f"日次データが不足しています（{len(series)}件）")
 
+            intra = None
+            day_closes: dict = {}
+            try:
+                intra, day_closes = fetch_intra(symbol)
+            except Exception as intra_exc:
+                print(f"  5分足取得失敗（intra=null で続行）: {intra_exc}", file=sys.stderr)
+
+            # 日次系列で終値が未反映（None）のまま欠けている日を、
+            # 5分足のその日の最終値で補完する（先物は日付の区切りが
+            # 取引日とずれるため対象外）
+            if day_closes and not symbol.endswith("=F"):
+                have = {day for day, _ in series}
+                for day in sorted(day_closes):
+                    if day not in have and series[0][0] < day < series[-1][0]:
+                        series.append([day, day_closes[day]])
+                        have.add(day)
+                series.sort(key=lambda p: p[0])
+
+            if len(series) < 2:
+                raise ValueError(f"日次データが不足しています（{len(series)}件）")
+
             last = series[-1]
             prev = series[-2]
             chg = round(last[1] - prev[1], 2)
             pct = round((chg / prev[1]) * 100, 2) if prev[1] else 0.0
 
-            intra = None
-            try:
-                intra = fetch_intra(symbol)
-            except Exception as intra_exc:
-                print(f"  5分足取得失敗（intra=null で続行）: {intra_exc}", file=sys.stderr)
+            # 5分足チャートの基準線（前日終値）は、5分足の日付の直前の
+            # 終値を使う（最新終値の日付と5分足の日付がずれる場合の対策）
+            intra_prev = None
+            if intra:
+                before = [p for p in series if p[0] < intra["date"]]
+                if before:
+                    intra_prev = before[-1]
 
             indices.append({
                 "name": name,
@@ -155,6 +204,7 @@ def main() -> int:
                 "pct": pct,
                 "series": series,
                 "intra": intra,
+                "intraPrev": intra_prev,
             })
             success_count += 1
             print(f"  OK: {last[0]} {last[1]} (前日比 {chg:+.2f}, {pct:+.2f}%)", file=sys.stderr)
